@@ -23,11 +23,12 @@
         <a-asset-item id="animated-asset" src="./assets/Rocketv3.glb"></a-asset-item>
       </a-assets>
 
+      <a-marker-camera type="pattern" patternUrl="./assets/pattern-03.patt"></a-marker-camera>
+
       <a-marker
         id="animated-marker"
         type="pattern"
-        preset="hiro"
-        url="./assets/pattern-hiro.patt"
+        url="./assets/pattern-03.patt"
         raycaster="objects: .clickable"
         emitevents="true"
         cursor="fuse: false; rayOrigin: mouse;"
