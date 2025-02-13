@@ -20,7 +20,7 @@
       gesture-detector      
     >
       <a-assets>
-        <a-asset-item id="animated-asset" src="./assets/Rocket 3.glb"></a-asset-item>
+        <a-asset-item id="animated-asset" src="./assets/Rocketv3.glb"></a-asset-item>
       </a-assets>
 
       <a-marker
@@ -38,7 +38,9 @@
           rotation="360 90 0"
           gltf-model="#animated-asset"
           class="clickable"
+          animation-mixer="loop: repeat; timeScale: 1"
           gesture-handler
+          
         ></a-entity>
       </a-marker>
 
