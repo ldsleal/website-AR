@@ -6,6 +6,18 @@
     <script src="https://raw.githack.com/donmccurdy/aframe-extras/master/dist/aframe-extras.loaders.min.js"></script>
     <script src="https://raw.githack.com/AR-js-org/studio-backend/master/src/modules/marker/tools/gesture-detector.js"></script>
     <script src="https://raw.githack.com/AR-js-org/studio-backend/master/src/modules/marker/tools/gesture-handler.js"></script>
+    <script>
+      AFRAME.registerComponent("stable-frame-rate", {
+        tick: function () {
+          this.el.sceneEl.renderer.setAnimationLoop(() => {
+            this.el.sceneEl.tick();
+            this.el.sceneEl.render();
+          });
+        },
+      });
+    </script>
+    
+    
     <style>
       .button-container {
         position: fixed;
@@ -28,9 +40,10 @@
 
   <body style="margin: 0; overflow: hidden">
     <a-scene
+      stable-frame-rate
       vr-mode-ui="enabled: false;"
       loading-screen="enabled: false;"
-      renderer="logarithmicDepthBuffer: true;"
+      renderer="antialias: true; logarithmicDepthBuffer: true; precision: highp;"
       arjs="trackingMethod: best; sourceType: webcam; sourceWidth:1280; sourceHeight:960; displayWidth: 1280; displayHeight: 960; debugUIEnabled: false;"
       id="scene"
       xrweb="scale:absolute"
@@ -52,7 +65,7 @@
         <a-entity
           position="0 0 0"
           scale="2 2 2"        
-          rotation="-90 360 0"
+          rotation="-90 0 0"
           gltf-model="#animated-asset"
           class="clickable"
           animation-mixer="loop: repeat; timeScale: 1"
@@ -61,8 +74,8 @@
         ></a-entity>
       </a-marker>
 
-      <a-entity camera></a-entity>
-      <a-light type="directional" light="castShadow:false;" intensity="3" position="2 4 4"></a-light>
+      <a-entity camera="near: 0.01; far: 1000;" position="0 1.6 3"></a-entity>
+      <a-light type="directional" light="castShadow: true; shadowBias: -0.0001;" intensity="3" position="2 4 4"></a-light>
       <a-light type="ambient" intensity="0.5" color="#BBB"></a-light>
     </a-scene>
 
