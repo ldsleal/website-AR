@@ -55,28 +55,29 @@
       </a-assets>
 
       <a-marker
-        id="animated-marker"
+        d="animated-marker"
         type="pattern"
         url="./assets/pattern-05.patt"
         raycaster="objects: .clickable"
         emitevents="true"
         cursor="fuse: false; rayOrigin: mouse;"
+        arjs="smooth: true; smoothCount: 10; smoothTolerance: 0.01; smoothThreshold: 5;"
       >
         <a-entity
           position="0 0 0"
-          scale="2 2 2"        
+          scale="1 1 1"        
           rotation="-90 0 0"
           gltf-model="#animated-asset"
           class="clickable"
-          animation-mixer="loop: repeat; timeScale: 1"
+          animation-mixer="timeScale: 0"
           gesture-handler
           
         ></a-entity>
       </a-marker>
 
       <a-entity camera="near: 0.01; far: 1000;" position="0 1.6 3"></a-entity>
-      <a-light type="directional" light="castShadow: true; shadowBias: -0.0001;" intensity="3" position="2 4 4"></a-light>
-      <a-light type="ambient" intensity="0.5" color="#BBB"></a-light>
+      <a-light type="ambient" intensity="0.8" color="#ffffff"></a-light>
+      <a-light type="directional" light="castShadow: true;" intensity="2" position="2 4 4"></a-light>
     </a-scene>
 
     <div class="button-container">
