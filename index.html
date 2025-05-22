@@ -2,9 +2,10 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <title>AR sem marcador</title>
+    <title>AR Sem Marcador com Hit Test</title>
     <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
-    <script src="https://rawcdn.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar-nft.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@ar-js-org/ar.js@3.4.2/aframe/build/aframe-ar-nft.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/aframe-ar-hit-test@1.1.1/dist/aframe-ar-hit-test.min.js"></script>
     <style>
       body {
         margin: 0;
@@ -17,19 +18,20 @@
     <a-scene
       vr-mode-ui="enabled: false"
       embedded
-      arjs="trackingMethod: best; sourceType: webcam; debugUIEnabled: false;"
+      renderer="logarithmicDepthBuffer: true;"
+      arjs="sourceType: webcam; debugUIEnabled: false;"
+      ar-hit-test
     >
-      <!-- Plano invisível para posicionar o modelo -->
       <a-entity
-        id="model"
-        position="0 0 0"
         gltf-model="assets/relato.glb"
         scale="0.1 0.1 0.1"
+        visible="false"
+        ar-hit-test-target
+        ar-hit-test-select
         rotation="0 180 0"
       ></a-entity>
 
-      <!-- Câmera -->
-      <a-entity camera></a-entity>
+      <a-camera position="0 0 0" look-controls-enabled="false"></a-camera>
     </a-scene>
   </body>
 </html>
