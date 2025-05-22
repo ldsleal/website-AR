@@ -1,37 +1,45 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
-    <meta charset="utf-8" />
-    <title>AR Sem Marcador com Hit Test</title>
-    <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@ar-js-org/ar.js@3.4.2/aframe/build/aframe-ar-nft.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/aframe-ar-hit-test@1.1.1/dist/aframe-ar-hit-test.min.js"></script>
-    <style>
-      body {
-        margin: 0;
-        overflow: hidden;
-      }
-    </style>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+
+    <script
+      type="module"
+      src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.0.0/model-viewer.min.js"
+    ></script>
+
+    <title>HTML + CSS</title>
   </head>
-
   <body>
-    <a-scene
-      vr-mode-ui="enabled: false"
-      embedded
-      renderer="logarithmicDepthBuffer: true;"
-      arjs="sourceType: webcam; debugUIEnabled: false;"
-      ar-hit-test
+    <model-viewer
+      src="assets/relato.glb"
+      ios-src="assets/relato.usdz"
+      style="width: 100vw; height: 90vh"
+      camera-controls
+      shadow-intensity="2"
+      touch-action="pan-y"
+      ar
+      scale="0.1 0.1 0.1"
     >
-      <a-entity
-        gltf-model="assets/relato.glb"
-        scale="0.1 0.1 0.1"
-        visible="false"
-        ar-hit-test-target
-        ar-hit-test-select
-        rotation="0 180 0"
-      ></a-entity>
-
-      <a-camera position="0 0 0" look-controls-enabled="false"></a-camera>
-    </a-scene>
+      <button id="ar-button" slot="ar-button">Start AR</button>
+    </model-viewer>
   </body>
+
+  <style>
+    #ar-button {
+      width: 120px;
+      height: 60px;
+      position: absolute;
+      right: 35px;
+      bottom: 35px;
+      background-color: rgb(64, 203, 203);
+      color: white;
+      border: none;
+      font-size: 20px;
+    }
+  </style>
 </html>
+
+<!-- Car model was created by: ｍononofu and provided by Sketchfab:https://sketchfab.com/3d-models/130-d9485f5360224e9dbaafd24b2eec0f1a -->
