@@ -14,17 +14,21 @@
   </head>
   <body>
     <model-viewer
-      src="assets/relato.glb"
-      ios-src="assets/relato.usdz"
-      style="width: 100vw; height: 90vh"
-      camera-controls
-      shadow-intensity="2"
-      touch-action="pan-y"
-      ar
-      scale="0.1 0.1 0.1"
-    >
-      <button id="ar-button" slot="ar-button">Start AR</button>
-    </model-viewer>
+    src="assets/relato.glb"
+    ios-src="assets/relato.usdz"
+    style="width: 100vw; height: 90vh"
+    ar
+    ar-modes="webxr scene-viewer quick-look"
+    ar-placement="fixed"
+    camera-controls
+    disable-tap
+    shadow-intensity="1"
+    touch-action="pan-y"
+    scale="0.1 0.1 0.1"
+  >
+    <button id="ar-button" slot="ar-button">Ver em AR</button>
+  </model-viewer>
+  
   </body>
 
   <style>
