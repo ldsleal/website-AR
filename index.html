@@ -1,51 +1,35 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-
-    <script
-      type="module"
-      src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.0.0/model-viewer.min.js"
-    ></script>
-
-    <title>HTML + CSS</title>
+    <meta charset="utf-8" />
+    <title>AR sem marcador</title>
+    <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
+    <script src="https://rawcdn.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar-nft.js"></script>
+    <style>
+      body {
+        margin: 0;
+        overflow: hidden;
+      }
+    </style>
   </head>
+
   <body>
-    <model-viewer
-    src="assets/relato.glb"
-    ios-src="assets/relato.usdz"
-    style="width: 100vw; height: 90vh"
-    ar
-    ar-modes="webxr scene-viewer quick-look"
-    ar-placement="fixed"
-    camera-orbit="0deg 90deg 2m"
-    field-of-view="20deg"
-    camera-controls
-    disable-tap
-    shadow-intensity="1"
-    touch-action="pan-y"
-    scale="0.1 0.1 0.1"
-  >
-    <button id="ar-button" slot="ar-button">Ver em AR</button>
-  </model-viewer>
-  
+    <a-scene
+      vr-mode-ui="enabled: false"
+      embedded
+      arjs="trackingMethod: best; sourceType: webcam; debugUIEnabled: false;"
+    >
+      <!-- Plano invisível para posicionar o modelo -->
+      <a-entity
+        id="model"
+        position="0 0 0"
+        gltf-model="assets/relato.glb"
+        scale="0.1 0.1 0.1"
+        rotation="0 180 0"
+      ></a-entity>
+
+      <!-- Câmera -->
+      <a-entity camera></a-entity>
+    </a-scene>
   </body>
-
-  <style>
-    #ar-button {
-      width: 120px;
-      height: 60px;
-      position: absolute;
-      right: 35px;
-      bottom: 35px;
-      background-color: rgb(64, 203, 203);
-      color: white;
-      border: none;
-      font-size: 20px;
-    }
-  </style>
 </html>
-
-<!-- Car model was created by: ｍononofu and provided by Sketchfab:https://sketchfab.com/3d-models/130-d9485f5360224e9dbaafd24b2eec0f1a -->
