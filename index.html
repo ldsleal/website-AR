@@ -1,118 +1,43 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-  <meta charset="UTF-8" />
-  <meta 
-    name="viewport" 
-    content="width=device-width, initial-scale=1.0" 
-  />
-  <title>WebAR Markerless com Botão Externo</title>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
 
-  <!-- Importa o model-viewer -->
-  <script 
-    type="module" 
-    src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"
-  ></script>
+    <script
+      type="module"
+      src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.0.0/model-viewer.min.js"
+    ></script>
+
+    <title>Relato Integrado</title>
+  </head>
+  <body>
+    <model-viewer
+      src="assets/relato_onepage.glb"
+      ios-src="assets/relato_onepage.usdz"
+      style="width: 100vw; height: 90vh"
+      camera-controls
+      shadow-intensity="2"
+      touch-action="pan-y"
+      ar
+      scale="0.1 0.1 0.1"
+    >
+      <button id="ar-button" slot="ar-button">Começar experiencia AR</button>
+    </model-viewer>
+  </body>
 
   <style>
-    html, body {
-      margin: 0;
-      padding: 0;
-      height: 100vh;
-      overflow: hidden;
-      background-color: #000;
-      font-family: sans-serif;
-    }
-
-    /* Faz o model-viewer ocupar toda a tela */
-    model-viewer {
-      width: 100%;
-      height: 100%;
-      background-color: #FFF;
-    }
-
-    /* Overlay que ficará por cima do AR */
-    #ar-overlay {
+    #ar-button {
+      width: 120px;
+      height: 60px;
       position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      display: none;            /* só aparece quando o AR iniciar */
-      pointer-events: none;     /* container não captura clique */
-      justify-content: center;
-      align-items: flex-end;
-    }
-
-    /* Botão dentro do overlay */
-    #ar-overlay button {
-      pointer-events: auto;     /* botão captura clique */
-      background: rgba(0, 0, 0, 0.6);
-      color: #FFF;
+      right: 35px;
+      bottom: 35px;
+      background-color: rgb(64, 203, 203);
+      color: white;
       border: none;
-      border-radius: 4px;
-      padding: 10px 16px;
-      font-size: 16px;
-      margin-bottom: 32px;
-      cursor: pointer;
+      font-size: 20px;
     }
   </style>
-</head>
-<body>
-
-  <!-- O próprio model-viewer -->
-  <model-viewer
-    id="meu-ar"
-    src="assets/relato_onepage.glb"        
-    ios-src="assets/relato_onepage.usdz"    
-    ar
-    ar-modes="webxr scene-viewer quick-look"
-    environment-image="neutral"
-    shadow-intensity="1"
-    camera-controls
-    auto-rotate
-
-    ar-dom-overlay
-    ar-dom-overlay-root="#ar-overlay"
-  >
-    <!-- Botão “Ver em AR” personalizado -->
-    <button slot="ar-button"
-            style="background: rgba(0,0,0,0.7);
-                   color: #FFF;
-                   border: none;
-                   border-radius: 4px;
-                   padding: 8px 12px;
-                   font-size: 14px;
-                   cursor: pointer;">
-      Ver em AR
-    </button>
-  </model-viewer>
-
-  <!-- Overlay que ficará visível durante a sessão AR -->
-  <div id="ar-overlay">
-    <button id="link-externo">
-      Ir para meu site
-    </button>
-  </div>
-
-  <script>
-    const mv = document.querySelector('#meu-ar');
-    const overlay = document.getElementById('ar-overlay');
-    const btnLink = document.getElementById('link-externo');
-
-    // Exibe/oculta o overlay conforme o status do AR
-    mv.addEventListener('ar-status', (e) => {
-      if (e.detail.status === 'session-started') {
-        overlay.style.display = 'flex';
-      } else {
-        overlay.style.display = 'none';
-      }
-    });
-
-    // Ao clicar, abre o site externo em nova aba
-    btnLink.addEventListener('click', () => {
-      window.open('https://us-west-2.graphassets.com/AnBrQA5RSVi98Y0U0Y7Qmz/cmapg0df9ra5t07n69dv2lb4y', '_blank');
-    });
-  </script>
-</body>
 </html>
