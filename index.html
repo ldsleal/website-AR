@@ -11,9 +11,43 @@
     ></script>
 
     <title>Relato Integrado</title>
+
+    <style>
+      #start-ar {
+        width: 180px;
+        height: 60px;
+        position: absolute;
+        right: 35px;
+        bottom: 35px;
+        background-color: rgb(64, 203, 203);
+        color: white;
+        border: none;
+        font-size: 18px;
+        border-radius: 8px;
+        cursor: pointer;
+        z-index: 10;
+      }
+
+      #open-link {
+        width: 180px;
+        height: 60px;
+        position: absolute;
+        left: 35px;
+        bottom: 35px;
+        background-color: #4caf50;
+        color: white;
+        border: none;
+        font-size: 18px;
+        border-radius: 8px;
+        cursor: pointer;
+        z-index: 10;
+      }
+    </style>
   </head>
+
   <body>
     <model-viewer
+      id="viewer"
       src="assets/relato_onepage.glb"
       ios-src="assets/relato_onepage.usdz"
       style="width: 100vw; height: 90vh"
@@ -23,21 +57,11 @@
       ar
       scale="0.1 0.1 0.1"
     >
-      <button id="ar-button" slot="ar-button">Começar experiencia AR</button>
+      <button id="start-ar" slot="ar-button">Começar experiência AR</button>
     </model-viewer>
-  </body>
 
-  <style>
-    #ar-button {
-      width: 120px;
-      height: 60px;
-      position: absolute;
-      right: 35px;
-      bottom: 35px;
-      background-color: rgb(64, 203, 203);
-      color: white;
-      border: none;
-      font-size: 20px;
-    }
-  </style>
+    <button id="open-link" onclick="window.open('https://us-west-2.graphassets.com/AnBrQA5RSVi98Y0U0Y7Qmz/cmapg0df9ra5t07n69dv2lb4y', '_blank')">
+      Conferir relato
+    </button>
+  </body>
 </html>
