@@ -1,92 +1,67 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Relato Integrado</title>
 
-    <!-- model-viewer -->
     <script
       type="module"
       src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.0.0/model-viewer.min.js"
     ></script>
 
-    <style>
-      body {
-        margin: 0;
-        overflow: hidden;
-      }
+    <title>Relato Integrado</title>
 
-      #start-ar,
-      .ar-link {
-        width: 180px;
-        height: 80px;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        text-align: center;
-        font-size: 18px;
-        font-weight: 500;
-        line-height: 1.2;
-        padding: 0;
-        margin: 0;
-        background-color: #01579b;
+    <style>
+      #start-ar {
+        width: 150px;
+        height: 60px;
+        position: absolute;
+        right: 35px;
+        bottom: 35px;
+        background-color: #0254a4;
         color: white;
         border: none;
-        border-radius: 12px;
+        font-size: 18px;
+        border-radius: 8px;
         cursor: pointer;
-        text-decoration: none;
         z-index: 10;
       }
 
-      .button-container {
+      #open-link {
+        width: 150px;
+        height: 60px;
         position: absolute;
+        left: 35px;
         bottom: 35px;
-        width: 100%;
-        display: flex;
-        justify-content: space-between;
-        padding: 0 35px;
-        box-sizing: border-box;
-        pointer-events: none;
-      }
-
-      .button-container button,
-      .button-container a {
-        pointer-events: all;
+        background-color: #0254a4;
+        color: white;
+        border: none;
+        font-size: 18px;
+        border-radius: 8px;
+        cursor: pointer;
+        z-index: 10;
       }
     </style>
   </head>
 
   <body>
-    <!-- model-viewer com botão AR -->
     <model-viewer
       id="viewer"
-      src="assets/relato_onepage.glb"
-      ios-src="assets/relato_onepage.usdz"
+      src="assets/relato_elevado.glb"
+      ios-src="assets/relato_elevado.usdz"
       style="width: 100vw; height: 90vh"
       camera-controls
       shadow-intensity="2"
       touch-action="pan-y"
       ar
-      ar-modes="scene-viewer quick-look"
-      scale="0.1 0.1 0.1"
+      scale="0.5 0.5 0.5"
     >
-      <button id="start-ar" slot="ar-button">Começar<br />experiência AR</button>
+      <button id="start-ar" slot="ar-button">Começar experiência AR</button>
+      <button id="open-link" onclick="window.open('https://us-west-2.graphassets.com/AnBrQA5RSVi98Y0U0Y7Qmz/cmapg0df9ra5t07n69dv2lb4y', '_blank')">
+        Conferir <br> relato
+      </button>
     </model-viewer>
 
-    <!-- Botões fixos na tela -->
-    <div class="button-container">
-      <!-- Botão iOS com rel="ar" -->
-      <a
-        class="ar-link"
-        rel="ar"
-        href="./assets/relato_elevado.usdz#custom=https://us-west-2.graphassets.com/AnBrQA5RSVi98Y0U0Y7Qmz/cmapg0df9ra5t07n69dv2lb4y&customName=Acesse%20o%20relato%20completo&canonicalWebPageURL=https://us-west-2.graphassets.com/AnBrQA5RSVi98Y0U0Y7Qmz/cmapg0df9ra5t07n69dv2lb4y"
-        target="_blank"
-      >
-        Conferir<br />relato
-      </a>
-    </div>
   </body>
 </html>
