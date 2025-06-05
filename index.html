@@ -10,10 +10,49 @@
       src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.0.0/model-viewer.min.js"
     ></script>
 
-    <title>HTML + CSS</title>
+    <title>Visualização AR</title>
+
+    <style>
+      body {
+        margin: 0;
+        overflow: hidden;
+      }
+
+      #ar-button {
+        width: 120px;
+        height: 60px;
+        position: absolute;
+        right: 35px;
+        bottom: 35px;
+        background-color: rgb(64, 203, 203);
+        color: white;
+        border: none;
+        font-size: 20px;
+        border-radius: 8px;
+        cursor: pointer;
+        z-index: 10;
+      }
+
+      #external-link {
+        position: absolute;
+        left: 35px;
+        bottom: 35px;
+        padding: 15px 25px;
+        font-size: 18px;
+        background-color: #4caf50;
+        color: white;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        z-index: 10;
+        display: none; /* começa oculto */
+      }
+    </style>
   </head>
+
   <body>
     <model-viewer
+      id="viewer"
       src="assets/relato_onepage.glb"
       ios-src="assets/relato_onepage.usdz"
       style="width: 100vw; height: 90vh"
@@ -25,21 +64,24 @@
     >
       <button id="ar-button" slot="ar-button">Start AR</button>
     </model-viewer>
+
+    <button id="external-link">Ir para o site</button>
+
+    <script>
+      const modelViewer = document.getElementById('viewer');
+      const linkButton = document.getElementById('external-link');
+
+      modelViewer.addEventListener('ar-status', (event) => {
+        if (event.detail.status === 'session-started') {
+          linkButton.style.display = 'block';
+        } else if (event.detail.status === 'not-presenting') {
+          linkButton.style.display = 'none';
+        }
+      });
+
+      linkButton.addEventListener('click', () => {
+        window.open('https://us-west-2.graphassets.com/AnBrQA5RSVi98Y0U0Y7Qmz/cmapg0df9ra5t07n69dv2lb4y', '_blank'); // <-- Altere aqui o destino
+      });
+    </script>
   </body>
-
-  <style>
-    #ar-button {
-      width: 120px;
-      height: 60px;
-      position: absolute;
-      right: 35px;
-      bottom: 35px;
-      background-color: rgb(64, 203, 203);
-      color: white;
-      border: none;
-      font-size: 20px;
-    }
-  </style>
 </html>
-
-<!-- Car model was created by: ｍononofu and provided by Sketchfab:https://sketchfab.com/3d-models/130-d9485f5360224e9dbaafd24b2eec0f1a -->
