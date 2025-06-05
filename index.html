@@ -13,48 +13,34 @@
     <title>Relato Integrado</title>
 
     <style>
-      body {
-        margin: 0;
-        overflow: hidden;
-      }
-
-      #start-ar,
-      #open-link {
-        width: 180px;
-        height: 80px;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        text-align: center;
-        font-size: 18px;
-        font-weight: 500;
-        line-height: 1.2;
-        padding: 0;
-        margin: 0;
-        background-color: #01579b;
+      #start-ar {
+        width: 150px;
+        height: 60px;
+        position: absolute;
+        right: 35px;
+        bottom: 35px;
+        background-color: #0254a4;
         color: white;
         border: none;
-        border-radius: 12px;
+        font-size: 18px;
+        border-radius: 8px;
         cursor: pointer;
         z-index: 10;
       }
 
-      /* Alinhamento na tela */
-      .button-container {
+      #open-link {
+        width: 150px;
+        height: 60px;
         position: absolute;
+        left: 35px;
         bottom: 35px;
-        width: 100%;
-        display: flex;
-        justify-content: space-between;
-        padding: 0 35px;
-        box-sizing: border-box;
-        pointer-events: none; /* para permitir clique em botões filhos sem afetar layout */
-      }
-
-      /* Reativa o clique nos botões */
-      .button-container button {
-        pointer-events: all;
+        background-color: #0254a4;
+        color: white;
+        border: none;
+        font-size: 18px;
+        border-radius: 8px;
+        cursor: pointer;
+        z-index: 10;
       }
     </style>
   </head>
@@ -71,13 +57,11 @@
       ar
       scale="0.1 0.1 0.1"
     >
-      <button id="start-ar" slot="ar-button">Começar<br>experiência AR</button>
+      <button id="start-ar" slot="ar-button">Começar experiência AR</button>
     </model-viewer>
 
-    <div class="button-container">
-      <button id="open-link" onclick="window.open('https://us-west-2.graphassets.com/AnBrQA5RSVi98Y0U0Y7Qmz/cmapg0df9ra5t07n69dv2lb4y', '_blank')">
-        Conferir<br>relato
-      </button>
-    </div>
+    <button id="open-link" onclick="window.open('https://us-west-2.graphassets.com/AnBrQA5RSVi98Y0U0Y7Qmz/cmapg0df9ra5t07n69dv2lb4y', '_blank')">
+      Conferir <br> relato
+    </button>
   </body>
 </html>
